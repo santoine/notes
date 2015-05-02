@@ -1,6 +1,5 @@
 package notes.web;
 
-import java.util.List;
 import java.util.Optional;
 
 import notes.domain.Note;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -30,8 +28,9 @@ public class NotesController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<Note> getAll() {
-		return noteService.findAll();
+	public String getAll(Model model) {
+		model.addAttribute("notes", noteService.findAll());
+		return "noteList";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
