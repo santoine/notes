@@ -1,38 +1,36 @@
 package notes.service;
 
-import static org.junit.Assert.*;
 import notes.Application;
 import notes.domain.Note;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
-@IntegrationTest({ "server.port=0" })
+@WebIntegrationTest({ "server.port=0" })
 public class NoteRepositoryIntegrationTest {
 
 	@Autowired
-	private NoteRepository sut;
+	private NoteRepository noteRepository;
 
 	@Before
 	public void setUp() {
-		sut.deleteAll();
+		noteRepository.deleteAll();
 	}
 
 	@Test
 	public void saveNote() throws Exception {
 		Note note = new Note("title", "content");
-		sut.save(note);
+		noteRepository.save(note);
 		
-		Note res = sut.findOne(1L);
+		Note res = noteRepository.findOne(1L);
 		assertNotNull(res);
 	}
 }

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Note</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+</head>
+<body>
+	<h1 th:text="Note + ' '+ ${note.id}">Id</h1>
+	<h2 th:text="${note.title}">title</h2>
+	<div th:text="${note.content}">content</div>
+</body>
+</html>
