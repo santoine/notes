@@ -1,14 +1,15 @@
 package notes.domain;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.joda.deser.LocalDateDeserializer;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.joda.deser.LocalDateDeserializer;
+import java.time.LocalDate;
 
 @Entity
 public class Note {
@@ -59,8 +60,11 @@ public class Note {
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", date=" + date + ", title=" + title
-				+ ", content=" + content + "]";
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+				.append("id", id)
+				.append("date", date)
+				.append("title", title)
+				.append("content", content)
+				.build();
 	}
-	
 }

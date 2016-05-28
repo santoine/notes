@@ -39,6 +39,9 @@ dependencies {
     compile("com.h2database:h2:1.4.187")
     compile("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.5.3")
     compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.3")
+    compile("org.apache.commons:commons-lang3:3.4")
+    compile("org.apache.commons:commons-collections4:4.1")
+
 
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
