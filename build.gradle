@@ -19,7 +19,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'gs-spring-boot'
+    baseName = 'notes-web'
     version =  '0.1.0'
 }
 
@@ -41,7 +41,7 @@ dependencies {
     compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.5.3")
     compile("org.apache.commons:commons-lang3:3.4")
     compile("org.apache.commons:commons-collections4:4.1")
-
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
 
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
